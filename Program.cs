@@ -10,20 +10,38 @@ namespace FlightControl
         public static void Main(string[] args)
         {
             
+            //Set status
+            FlightControl.Instance.SystemStatus = Status.StandBy;
+            
             //Start the controller
             StatusLightController slc = new StatusLightController();
             Task.Run(() => slc.StartAsync()); //Run in another thread
 
             while (true)
             {
-                Console.Write("Making it offline... ");
-                FlightControl.Instance.SystemStatus = Status.Offline;
-                Console.WriteLine("Offline!");
-                Task.Delay(10000).Wait();
-                Console.Write("Making it on standby... ");
-                FlightControl.Instance.SystemStatus = Status.StandBy;
-                Console.WriteLine("Standby!");
-                Task.Delay(10000).Wait();
+                Console.Write("FC>");
+                string? cmd = Console.ReadLine();
+                if (cmd != null)
+                {
+                    if (cmd == "exit")
+                    {
+                        return;
+                    }
+                    else if (cmd == "status offline")
+                    {
+                        FlightControl.Instance.SystemStatus = Status.Offline;
+                        Console.WriteLine("Status set to Offline");
+                    }
+                    else if (cmd == "status standby")
+                    {
+                        FlightControl.Instance.SystemStatus = Status.StandBy;
+                        Console.WriteLine("Status set to StandBy");
+                    }
+                    else
+                    {
+                        Console.WriteLine("I got not understand that command!");
+                    }
+                }
             }
 
 
