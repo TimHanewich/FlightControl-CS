@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Device.Gpio;
 
 namespace FlightControl
 {
