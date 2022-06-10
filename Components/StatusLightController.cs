@@ -18,18 +18,18 @@ namespace FlightControl
                 if (FlightControl.Instance.SystemStatus == Status.Offline)
                 {
                     gpio.Write(pin, PinValue.High);
-                    await Task.Delay(1500);
+                    await Task.Delay(500);
                     gpio.Write(pin, PinValue.Low);
-                    await Task.Delay(1500);
+                    await Task.Delay(500);
                 }
                 else if (FlightControl.Instance.SystemStatus == Status.StandBy)
                 {
                     gpio.Write(pin, PinValue.High);
-                    await Task.Delay(250);
+                    await Task.Delay(50);
                     gpio.Write(pin, PinValue.Low);
-                    await Task.Delay(250);
+                    await Task.Delay(50);
                     gpio.Write(pin, PinValue.High);
-                    await Task.Delay(250);
+                    await Task.Delay(50);
                     gpio.Write(pin, PinValue.Low);
                     await Task.Delay(2500);
                 }
