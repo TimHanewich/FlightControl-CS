@@ -37,6 +37,10 @@ namespace FlightControl
                         FlightControl.Instance.SystemStatus = Status.StandBy;
                         Console.WriteLine("Status set to StandBy");
                     }
+                    else if (cmd == "test")
+                    {
+                        Test.RunTestAsync().Wait();
+                    }
                     else
                     {
                         Console.WriteLine("I got not understand that command!");
