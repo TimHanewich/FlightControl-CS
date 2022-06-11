@@ -39,7 +39,7 @@ namespace FlightControl
                     }
                     else if (cmd == "test")
                     {
-                        Test.RunTestAsync().Wait();
+                        Test.TestBuzzerAsync().Wait();
                     }
                     else
                     {

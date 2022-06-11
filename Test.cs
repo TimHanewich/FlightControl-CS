@@ -1,6 +1,7 @@
 using System;
 using System.Device.Gpio;
 using System.Threading.Tasks;
+using System.Device.Pwm;
 
 namespace FlightControl
 {
@@ -37,6 +38,21 @@ namespace FlightControl
             gpio.ClosePin(Motor1B);
             gpio.ClosePin(Motor1E);
             Console.WriteLine("Dumped!");
+        }
+    
+        public static async Task TestBuzzerAsync()
+        {
+            int pin = 8;
+            int freq = 523;
+
+            System.Device.Pwm.PwmChannel c = PwmChannel.Create(0, pin, freq, 0.5);
+            c.Start();
+
+            await Task.Delay(3000);
+
+            c.Stop();
+            c.Dispose();
+            
         }
     }
 }
